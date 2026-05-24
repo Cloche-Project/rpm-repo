@@ -113,6 +113,14 @@ jobs:
             --define "version ${{ needs.check-version.outputs.version }}" \
             specs/bazaar.spec
 
+      - name: List installed files (debug)
+        run: |
+          rpmbuild -bi \
+            --define "version ${{ needs.check-version.outputs.version }}" \
+            --define "_smp_mflags -j$(nproc)" \
+            specs/bazaar.spec
+          find ~/rpmbuild/BUILDROOT/ | sort
+
       - name: Build binary RPM
         run: |
           rpmbuild -bb \
