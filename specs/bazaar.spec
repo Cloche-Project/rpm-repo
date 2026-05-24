@@ -33,6 +33,7 @@ BuildRequires:  gtksourceview5-devel
 BuildRequires:  webkitgtk6.0-devel
 BuildRequires:  libsecret-devel
 BuildRequires:  libproxy-devel
+BuildRequires:  python3-babel
 
 Requires:       flatpak
 Requires:       hicolor-icon-theme
