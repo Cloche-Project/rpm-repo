@@ -224,8 +224,8 @@ jobs:
 
       - name: Copy .repo files
         run: |
-          cp cloche-fedora.repo gh-pages/cloche-fedora.repo
-          cp cloche-centos.repo gh-pages/cloche-centos.repo
+          cp cloche-rpm.repo gh-pages/cloche-rpm.repo
+          cp cloche-pro-rpm.repo gh-pages/cloche-pro-rpm.repo
 
       - name: Commit and push gh-pages
         working-directory: gh-pages
