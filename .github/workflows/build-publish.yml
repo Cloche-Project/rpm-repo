@@ -211,7 +211,7 @@ jobs:
 
       - name: Regenerate repodata
         run: |
-          for REPO_DIR in gh-pages/fedora gh-pages/centos-stream; do
+          for REPO_DIR in gh-pages/cloche gh-pages/cloche-pro; do
             [ -d "$REPO_DIR" ] || continue
             find "$REPO_DIR" -mindepth 2 -maxdepth 2 -type d | while read ARCH_DIR; do
               createrepo_c --update --checksum sha256 "$ARCH_DIR"
