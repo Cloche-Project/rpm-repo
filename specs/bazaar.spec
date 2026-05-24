@@ -1,4 +1,4 @@
-Name:           bazaar
+Name:           Bazaar
 Version:        0.8.1
 Release:        1%{?dist}
 Summary:        App store for GNOME with Flatpak support
@@ -68,11 +68,20 @@ application metadata browsing, developer support links, and fast search.
 %license COPYING
 %doc README.md
 %{_bindir}/bazaar
-%{_datadir}/applications/io.github.kolunmi.bazaar.desktop
-%{_datadir}/metainfo/io.github.kolunmi.bazaar.metainfo.xml
-%{_datadir}/icons/hicolor/*/apps/io.github.kolunmi.bazaar*
-%{?_datadir}/glib-2.0/schemas/io.github.kolunmi.bazaar.gschema.xml
-%{?_datadir}/dbus-1/services/io.github.kolunmi.bazaar*.service
+%{_bindir}/bazaar-dl-worker
+%{_bindir}/bazaar-refresh-worker
+%{_bindir}/bge-demo
+%{_libdir}/libbge-0.8.1.so
+%{_libdir}/pkgconfig/bge-0.8.1.pc
+%{_includedir}/bge/
+%{_datadir}/applications/io.github.kolunmi.Bazaar.desktop
+%{_datadir}/metainfo/io.github.kolunmi.Bazaar.metainfo.xml
+%{_datadir}/icons/hicolor/scalable/apps/io.github.kolunmi.Bazaar.svg
+%{_datadir}/icons/hicolor/symbolic/apps/io.github.kolunmi.Bazaar-symbolic.svg
+%{_datadir}/glib-2.0/schemas/io.github.kolunmi.Bazaar.gschema.xml
+%{_datadir}/dbus-1/services/io.github.kolunmi.Bazaar.service
+%{_datadir}/gnome-shell/search-providers/io.github.kolunmi.Bazaar.search-provider.ini
+%{_userunitdir}/io.github.kolunmi.Bazaar.service
 
 %changelog
 * %(date "+%a %b %d %Y") Cloche Maintainers <packages@cloche.example> - %{version}-1
