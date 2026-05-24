@@ -32,6 +32,7 @@ BuildRequires:  md4c-devel >= 0.5.1
 BuildRequires:  gtksourceview5-devel
 BuildRequires:  webkitgtk6.0-devel
 BuildRequires:  libsecret-devel
+BuildRequires:  libproxy-devel
 
 Requires:       flatpak
 Requires:       hicolor-icon-theme
