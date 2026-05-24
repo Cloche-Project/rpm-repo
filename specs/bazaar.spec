@@ -31,6 +31,7 @@ BuildRequires:  json-glib-devel >= 1.10.0
 BuildRequires:  md4c-devel >= 0.5.1
 BuildRequires:  gtksourceview5-devel
 BuildRequires:  webkitgtk6.0-devel
+BuildRequires:  libsecret-devel
 
 Requires:       flatpak
 Requires:       hicolor-icon-theme
