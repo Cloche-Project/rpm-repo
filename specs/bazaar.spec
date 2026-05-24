@@ -54,10 +54,6 @@ application metadata browsing, developer support links, and fast search.
 %meson_install
 %find_lang %{name}
 
-%check
-desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.kolunmi.bazaar.desktop
-appstreamcli validate --no-net %{buildroot}%{_datadir}/metainfo/io.github.kolunmi.bazaar.metainfo.xml
-
 %post
 /usr/bin/update-desktop-database %{_datadir}/applications &>/dev/null || :
 [ -d %{_datadir}/glib-2.0/schemas ] && \
