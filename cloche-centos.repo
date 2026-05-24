@@ -1,6 +1,6 @@
 [cloche]
-name=Cloche – CentOS Stream $releasever
-baseurl=https://cloche-project.github.io/rpm-repo/centos-stream/$releasever/$basearch/
+name=Cloche Pro RPM Repository
+baseurl=https://cloche-project.github.io/rpm-repo/cloche-pro/$releasever/$basearch/
 enabled=1
 gpgcheck=1
 gpgkey=https://cloche-project.github.io/rpm-repo/RPM-GPG-KEY-cloche
