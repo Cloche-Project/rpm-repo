@@ -15,7 +15,6 @@ BuildRequires:  gcc
 BuildRequires:  pkgconf-pkg-config
 BuildRequires:  gettext
 BuildRequires:  desktop-file-utils
-BuildRequires:  appstream-glib
 BuildRequires:  glib2-devel
 BuildRequires:  blueprint-compiler
 BuildRequires:  gtk4-devel >= 4.22.1
