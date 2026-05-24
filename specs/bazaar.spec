@@ -54,7 +54,7 @@ application metadata browsing, developer support links, and fast search.
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.kolunmi.bazaar.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github.kolunmi.bazaar.metainfo.xml
+appstreamcli validate --no-net %{buildroot}%{_datadir}/metainfo/io.github.kolunmi.bazaar.metainfo.xml
 
 %post
 /usr/bin/update-desktop-database %{_datadir}/applications &>/dev/null || :

@@ -134,10 +134,7 @@ jobs:
 
   sign-and-publish:
     needs: [check-version, build]
-    if: |
-      always() &&
-      needs.check-version.outputs.should_build == 'true' &&
-      needs.build.result != 'failure'
+    if: always() && needs.check-version.outputs.should_build == 'true'
     runs-on: ubuntu-latest
 
     steps:
@@ -148,6 +145,15 @@ jobs:
         with:
           path: /tmp/all-rpms
           pattern: rpms-*
+
+      - name: Check if any RPMs were downloaded
+        run: |
+          COUNT=$(find /tmp/all-rpms -name '*.rpm' 2>/dev/null | wc -l)
+          if [ "$COUNT" -eq 0 ]; then
+            echo "No RPMs built successfully, nothing to publish"
+            exit 1
+          fi
+          echo "$COUNT RPM(s) ready to sign and publish"
 
       - name: Install signing and repo tools
         run: |
