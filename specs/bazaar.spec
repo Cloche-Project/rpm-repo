@@ -1,4 +1,4 @@
-Name:           Bazaar
+Name:           bazaar
 Version:        0.8.1
 Release:        1%{?dist}
 Summary:        App store for GNOME with Flatpak support
@@ -44,7 +44,7 @@ applications from Flatpak remotes, particularly Flathub. It provides rich
 application metadata browsing, developer support links, and fast search.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n bazaar-%{version}
 
 %build
 %meson
