@@ -118,6 +118,7 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
+          token: ${{ secrets.GH_PAT }}
 
       - name: Organise RPMs into repo tree
         run: |
