@@ -16,13 +16,6 @@ jobs:
           - name:    fedora-44
             image:   fedora:44
             optional: false
-          - name:    centos-stream-10
-            image:   quay.io/centos/centos:stream10
-            setup: |
-              dnf install -y 'dnf-command(config-manager)'
-              dnf config-manager --enable crb
-              dnf install -y epel-release
-            optional: true
 
     runs-on: ubuntu-latest
     container:
