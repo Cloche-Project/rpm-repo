@@ -1,0 +1,170 @@
+name: Build Cloche Packages
+
+on:
+  push:
+    paths:
+      - 'sources/cloche-gnome-defaults/**'
+      - 'specs/cloche-gnome-defaults.spec'
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - name:    fedora-44
+            image:   fedora:44
+            optional: false
+          - name:    centos-stream-10
+            image:   quay.io/centos/centos:stream10
+            setup: |
+              dnf install -y 'dnf-command(config-manager)'
+              dnf config-manager --enable crb
+              dnf install -y epel-release
+            optional: true
+
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ matrix.target.image }}
+    continue-on-error: ${{ matrix.target.optional }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Distro-specific setup
+        if: ${{ matrix.target.setup != '' }}
+        run: ${{ matrix.target.setup }}
+
+      - name: Install build toolchain
+        run: dnf install -y rpm-build rpmdevtools rpm-sign gnupg2
+
+      - name: Set up rpmbuild tree
+        run: rpmdev-setuptree
+
+      - name: Create source tarball
+        run: |
+          cd sources
+          tar czf ~/rpmbuild/SOURCES/cloche-gnome-defaults-44.0.tar.gz \
+            --transform 's|^cloche-gnome-defaults|cloche-gnome-defaults-44.0|' \
+            cloche-gnome-defaults/
+
+      - name: Build RPM
+        run: rpmbuild -bb specs/cloche-gnome-defaults.spec
+
+      - name: Collect RPMs
+        run: |
+          mkdir -p /tmp/rpms
+          find ~/rpmbuild/RPMS -name '*.rpm' -exec cp {} /tmp/rpms/ \;
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: rpms-${{ matrix.target.name }}
+          path: /tmp/rpms/*.rpm
+          if-no-files-found: error
+
+  sign-and-publish:
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all RPM artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: /tmp/all-rpms
+          pattern: rpms-*
+
+      - name: Check if any RPMs were downloaded
+        run: |
+          COUNT=$(find /tmp/all-rpms -name '*.rpm' 2>/dev/null | wc -l)
+          if [ "$COUNT" -eq 0 ]; then
+            echo "No RPMs built successfully, nothing to publish"
+            exit 1
+          fi
+          echo "$COUNT RPM(s) ready to sign and publish"
+
+      - name: Install signing and repo tools
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y --no-install-recommends \
+            gnupg rpm createrepo-c
+
+      - name: Import GPG signing key
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE:  ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          echo "$GPG_PRIVATE_KEY" | base64 -d | gpg --batch --import
+          cat > ~/.rpmmacros << 'EOF'
+          %_signature      gpg
+          %_gpg_name       Cloche Signing Key
+          %__gpg_sign_cmd  %{__gpg} gpg \
+                             --batch --no-verbose --pinentry-mode loopback \
+                             --passphrase-fd 3 \
+                             -u "%{_gpg_name}" -sbo %{__signature_filename} \
+                             --digest-algo sha256 %{__plaintext_filename}
+          EOF
+
+      - name: Sign all RPMs
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          find /tmp/all-rpms -name '*.rpm' | while read RPM; do
+            echo "Signing: $RPM"
+            echo "$GPG_PASSPHRASE" | rpmsign --addsign \
+              --define "_gpg_name Cloche Signing Key" \
+              "$RPM" 3<&0
+          done
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Organise RPMs into repo tree
+        run: |
+          declare -A TARGET_PATHS
+          TARGET_PATHS["rpms-fedora-44"]="cloche/44/x86_64"
+          TARGET_PATHS["rpms-centos-stream-10"]="cloche-pro/10/x86_64"
+
+          for ARTIFACT_DIR in /tmp/all-rpms/*/; do
+            ARTIFACT_NAME=$(basename "$ARTIFACT_DIR")
+            REPO_PATH="${TARGET_PATHS[$ARTIFACT_NAME]:-}"
+            [ -z "$REPO_PATH" ] && continue
+            DEST="gh-pages/$REPO_PATH"
+            mkdir -p "$DEST"
+            find "$ARTIFACT_DIR" -name '*.rpm' -exec cp -f {} "$DEST/" \;
+          done
+
+      - name: Regenerate repodata
+        run: |
+          for REPO_DIR in gh-pages/cloche gh-pages/cloche-pro; do
+            [ -d "$REPO_DIR" ] || continue
+            find "$REPO_DIR" -mindepth 2 -maxdepth 2 -type d | while read ARCH_DIR; do
+              createrepo_c --update --checksum sha256 "$ARCH_DIR"
+            done
+          done
+
+      - name: Export public GPG key
+        run: |
+          gpg --armor --export "Cloche Signing Key" > gh-pages/RPM-GPG-KEY-cloche
+
+      - name: Copy .repo files
+        run: |
+          cp cloche-rpm.repo gh-pages/cloche-rpm.repo
+          cp cloche-pro-rpm.repo gh-pages/cloche-pro-rpm.repo
+
+      - name: Commit and push gh-pages
+        working-directory: gh-pages
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --cached --quiet && echo "Nothing changed" && exit 0
+          git commit -m "repo: publish cloche packages"
+          git push origin gh-pages

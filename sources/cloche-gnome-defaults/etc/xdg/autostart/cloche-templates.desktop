@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Cloche Templates
+Exec=bash -c 'mkdir -p "$HOME/Templates" && \
+  cp -n /usr/share/cloche-templates/* "$HOME/Templates/" 2>/dev/null; \
+  mkdir -p "$HOME/Modelos" && \
+  cp -n /usr/share/cloche-templates/* "$HOME/Modelos/" 2>/dev/null'
+OnlyShowIn=GNOME;
+X-GNOME-Autostart-enabled=true
+NoDisplay=true
