@@ -23,8 +23,6 @@ System-wide GNOME settings and GTK theme configuration for Cloche.
 %setup -q
 
 %install
-install -Dm644 etc/dconf/profile/user \
-    %{buildroot}/etc/dconf/profile/user
 install -Dm644 etc/dconf/db/local.d/00-cloche-gnome \
     %{buildroot}/etc/dconf/db/local.d/00-cloche-gnome
 install -Dm644 usr/share/pixmaps/system-logo-white.png \
@@ -42,13 +40,15 @@ cp -r etc/skel/.config/gtk-3.0 %{buildroot}/etc/skel/.config/
 cp -r etc/skel/.config/gtk-4.0 %{buildroot}/etc/skel/.config/
 
 %post
+if ! grep -q "system-db:local" /etc/dconf/profile/user 2>/dev/null; then
+    echo -e "user-db:user\nsystem-db:local" > /etc/dconf/profile/user
+fi
 dconf update
 
 %postun
 dconf update
 
 %files
-%config(noreplace) /etc/dconf/profile/user
 /etc/dconf/db/local.d/00-cloche-gnome
 /usr/share/pixmaps/system-logo-white.png
 /etc/xdg/autostart/cloche-templates.desktop
