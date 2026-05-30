@@ -45,8 +45,8 @@ translate=true
 [org/gnome/desktop/background]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/cloche/default.png'
-picture-uri-dark='file:///usr/share/backgrounds/cloche/default.png'
+picture-uri='file:///usr/share/backgrounds/cloche/towers-light.png'
+picture-uri-dark='file:///usr/share/backgrounds/cloche/towers-dark.png'
 primary-color='#000000000000'
 secondary-color='#000000000000'
 
@@ -136,7 +136,7 @@ two-finger-scrolling-enabled=true
 [org/gnome/desktop/screensaver]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/cloche/default.png'
+picture-uri='file:///usr/share/backgrounds/cloche/towers-light.png'
 primary-color='#000000000000'
 secondary-color='#000000000000'
 
