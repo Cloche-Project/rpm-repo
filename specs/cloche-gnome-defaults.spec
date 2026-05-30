@@ -25,8 +25,6 @@ System-wide GNOME settings and GTK theme configuration for Cloche.
 %install
 install -Dm644 etc/dconf/db/local.d/00-cloche-gnome \
     %{buildroot}/etc/dconf/db/local.d/00-cloche-gnome
-install -Dm644 usr/share/pixmaps/system-logo-white.png \
-    %{buildroot}/usr/share/pixmaps/system-logo-white.png
 install -Dm644 etc/xdg/autostart/cloche-templates.desktop \
     %{buildroot}/etc/xdg/autostart/cloche-templates.desktop
 install -Dm644 usr/share/backgrounds/cloche/towers-light.png \
@@ -50,7 +48,6 @@ dconf update
 
 %files
 /etc/dconf/db/local.d/00-cloche-gnome
-/usr/share/pixmaps/system-logo-white.png
 /etc/xdg/autostart/cloche-templates.desktop
 /usr/share/backgrounds/cloche/
 /usr/share/gnome-background-properties/cloche-default.xml
