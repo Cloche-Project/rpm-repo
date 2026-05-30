@@ -5,6 +5,7 @@ font-name='Monospace Bold 11 @wght=700'
 profile-uuids=['5ff25dd532333c1d192781ea69b05bb2']
 use-system-font=false
 window-size=(uint32 212, uint32 47)
+restore-window-size=true
 
 [org/gnome/Ptyxis/Profiles/5ff25dd532333c1d192781ea69b05bb2]
 palette='Ibm 3270 (High Contrast)'
@@ -65,7 +66,7 @@ accent-color='blue'
 clock-format='24h'
 clock-show-seconds=false
 clock-show-weekday=false
-color-scheme='prefer-dark'
+color-scheme='prefer-light'
 enable-hot-corners=false
 show-battery-percentage=false
 
