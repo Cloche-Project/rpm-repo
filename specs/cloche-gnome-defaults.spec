@@ -1,6 +1,6 @@
 Name:           cloche-gnome-defaults
-Version:        44.0
-Release:        1%{?dist}
+Version:        44
+Release:        %{?build_timestamp}%{!?build_timestamp:1}%{?dist}
 Summary:        GNOME defaults and dconf settings for Cloche
 License:        Apache-2.0
 URL:            https://github.com/cloche-project/cloche-standard
