@@ -31,6 +31,8 @@ install -Dm644 usr/share/backgrounds/cloche/towers-light.png \
     %{buildroot}/usr/share/backgrounds/cloche/towers-light.png
 install -Dm644 usr/share/backgrounds/cloche/towers-dark.png \
     %{buildroot}/usr/share/backgrounds/cloche/towers-dark.png
+install -Dm644 usr/share/icons/breeze/places/cloche-symbolic-current.svg \
+    %{buildroot}/usr/share/icons/breeze/places/cloche-symbolic-current.svg
 install -Dm644 usr/share/gnome-background-properties/cloche-default.xml \
     %{buildroot}/usr/share/gnome-background-properties/cloche-default.xml
 mkdir -p %{buildroot}/etc/skel/.config
@@ -51,6 +53,7 @@ dconf update
 /etc/xdg/autostart/cloche-templates.desktop
 /usr/share/backgrounds/cloche/
 /usr/share/gnome-background-properties/cloche-default.xml
+/usr/share/icons/breeze/places/cloche-symbolic-current.svg
 %dir /etc/skel/.config/gtk-3.0
 /etc/skel/.config/gtk-3.0/
 %dir /etc/skel/.config/gtk-4.0
