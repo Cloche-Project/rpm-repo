@@ -38,8 +38,8 @@ jobs:
       - name: Create source tarball
         run: |
           cd sources
-          tar czf ~/rpmbuild/SOURCES/cloche-gnome-defaults-44.tar.gz \
-            --transform 's|^cloche-gnome-defaults|cloche-gnome-defaults-44|' \
+          tar czf ~/rpmbuild/SOURCES/cloche-gnome-defaults-44.0.tar.gz \
+            --transform 's|^cloche-gnome-defaults|cloche-gnome-defaults-44.0|' \
             cloche-gnome-defaults/
 
       - name: Build RPM
