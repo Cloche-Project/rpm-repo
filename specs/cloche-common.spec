@@ -17,8 +17,6 @@ Base configuration and branding for Cloche, independent of desktop environment.
 %setup -q
 
 %install
-install -Dm644 etc/distrobox/distrobox.ini \
-    %{buildroot}/etc/distrobox/distrobox.ini
 install -Dm644 etc/fastfetch/config.jsonc \
     %{buildroot}/etc/fastfetch/config.jsonc
 install -Dm755 etc/profile.d/cloche-fetch.sh \
@@ -28,8 +26,15 @@ install -Dm755 etc/profile.d/toolbox.sh \
 install -Dm644 usr/share/cloche/logo.txt \
     %{buildroot}/usr/share/cloche/logo.txt
 
+%post
+# 
+if [ ! -f /etc/distrobox/distrobox.ini ]; then
+    mkdir -p /etc/distrobox
+    cp /dev/stdin /etc/distrobox/distrobox.ini << 'EOF'
+EOF
+fi
+
 %files
-/etc/distrobox/distrobox.ini
 /etc/fastfetch/config.jsonc
 /etc/profile.d/cloche-fetch.sh
 /etc/profile.d/toolbox.sh
