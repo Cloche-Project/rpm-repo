@@ -21,8 +21,8 @@ install -Dm644 etc/fastfetch/config.jsonc \
     %{buildroot}/etc/fastfetch/config.jsonc
 install -Dm755 etc/profile.d/cloche-fetch.sh \
     %{buildroot}/etc/profile.d/cloche-fetch.sh
-install -Dm755 etc/profile.d/toolbox.sh \
-    %{buildroot}/etc/profile.d/toolbox.sh
+install -Dm755 etc/profile.d/cloche-welcome.sh \
+    %{buildroot}/etc/profile.d/cloche-welcome.sh
 install -Dm644 usr/share/cloche/logo.txt \
     %{buildroot}/usr/share/cloche/logo.txt
 
@@ -37,5 +37,5 @@ fi
 %files
 /etc/fastfetch/config.jsonc
 /etc/profile.d/cloche-fetch.sh
-/etc/profile.d/toolbox.sh
+/etc/profile.d/cloche-welcome.sh
 /usr/share/cloche/logo.txt
