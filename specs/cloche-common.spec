@@ -17,6 +17,8 @@ Base configuration and branding for Cloche, independent of desktop environment.
 %setup -q
 
 %install
+install -Dm644 usr/share/icons/breeze/places/cloche-symbolic-current.svg \
+    %{buildroot}/usr/share/icons/breeze/places/cloche-symbolic-current.svg
 install -Dm644 etc/fastfetch/config.jsonc \
     %{buildroot}/etc/fastfetch/config.jsonc
 install -Dm755 etc/profile.d/cloche-fetch.sh \
@@ -35,6 +37,7 @@ EOF
 fi
 
 %files
+/usr/share/icons/breeze/places/cloche-symbolic-current.svg
 /etc/fastfetch/config.jsonc
 /etc/profile.d/cloche-fetch.sh
 /etc/profile.d/cloche-welcome.sh
