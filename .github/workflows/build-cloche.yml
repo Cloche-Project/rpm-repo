@@ -17,6 +17,9 @@ jobs:
             version: "44.0"
           - name:    cloche-gnome-defaults
             version: "44.0"
+          - name:    cloche-kde-defaults
+            version: "44.0"
+          
         target:
           - name:    fedora-44
             image:   fedora:44
