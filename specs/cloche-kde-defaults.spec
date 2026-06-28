@@ -6,7 +6,6 @@ License:        Apache-2.0
 URL:            https://github.com/cloche-project/cloche-standard
 Source0:        %{name}-%{version}.tar.gz
 BuildArch:      noarch
-
 Requires:       plasma-desktop
 Requires:       konsole
 Requires:       cloche-common
@@ -18,12 +17,18 @@ System-wide KDE Plasma settings and Konsole configuration for Cloche.
 %setup -q
 
 %install
-mkdir -p %{buildroot}/etc/skel/.config
-mkdir -p %{buildroot}/etc/skel/.local/share/konsole
-cp -r etc/skel/.config/. %{buildroot}/etc/skel/.config/
-cp etc/skel/.local/share/konsole/Main.profile \
+install -Dm644 etc/skel/.config/kactivitymanagerdrc       %{buildroot}/etc/skel/.config/kactivitymanagerdrc
+install -Dm644 etc/skel/.config/kdeglobals                %{buildroot}/etc/skel/.config/kdeglobals
+install -Dm644 etc/skel/.config/kglobalshortcutsrc        %{buildroot}/etc/skel/.config/kglobalshortcutsrc
+install -Dm644 etc/skel/.config/konsolerc                 %{buildroot}/etc/skel/.config/konsolerc
+install -Dm644 etc/skel/.config/kscreenlockerrc           %{buildroot}/etc/skel/.config/kscreenlockerrc
+install -Dm644 etc/skel/.config/kwinrc                    %{buildroot}/etc/skel/.config/kwinrc
+install -Dm644 etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc \
+    %{buildroot}/etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc
+install -Dm644 etc/skel/.local/share/konsole/Main.profile \
     %{buildroot}/etc/skel/.local/share/konsole/Main.profile
 
+%files
 %dir /etc/skel/.config
 /etc/skel/.config/kactivitymanagerdrc
 /etc/skel/.config/kdeglobals
