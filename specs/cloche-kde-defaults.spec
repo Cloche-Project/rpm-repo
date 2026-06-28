@@ -24,8 +24,6 @@ cp -r etc/skel/.config/. %{buildroot}/etc/skel/.config/
 cp etc/skel/.local/share/konsole/Main.profile \
     %{buildroot}/etc/skel/.local/share/konsole/Main.profile
 
-%files
-/etc/xdg/kcm-about-distrorc
 %dir /etc/skel/.config
 /etc/skel/.config/kactivitymanagerdrc
 /etc/skel/.config/kdeglobals
