@@ -20,8 +20,6 @@ System-wide KDE Plasma settings and Konsole configuration for Cloche.
 %install
 mkdir -p %{buildroot}/etc/skel/.config
 mkdir -p %{buildroot}/etc/skel/.local/share/konsole
-install -Dm644 etc/xdg/kcm-about-distrorc \
-    %{buildroot}/etc/xdg/kcm-about-distrorc
 cp -r etc/skel/.config/. %{buildroot}/etc/skel/.config/
 cp etc/skel/.local/share/konsole/Main.profile \
     %{buildroot}/etc/skel/.local/share/konsole/Main.profile
