@@ -129,6 +129,7 @@ jobs:
           token: ${{ secrets.GH_PAT }}
 
       - name: Organise RPMs into repo tree
+        shell: bash
         run: |
           declare -A TARGET_PATHS
           TARGET_PATHS["rpms-fedora-44"]="cloche/44/x86_64"
