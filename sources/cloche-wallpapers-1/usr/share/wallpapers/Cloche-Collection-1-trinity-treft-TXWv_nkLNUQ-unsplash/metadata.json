@@ -6,5 +6,8 @@
     "Author": "Trinity Treft",
     "License": "Unsplash License",
     "Website": "https://unsplash.com/photos/TXWv_nkLNUQ"
+  },
+  "Wallpaper": {
+    "defaultWallpaper": "contents/images/trinity-treft-TXWv_nkLNUQ-unsplash.webp"
   }
 }

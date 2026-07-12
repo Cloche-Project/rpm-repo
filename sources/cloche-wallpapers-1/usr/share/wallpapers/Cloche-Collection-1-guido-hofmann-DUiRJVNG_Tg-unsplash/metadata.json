@@ -6,5 +6,8 @@
     "Author": "Guido Hofmann",
     "License": "Unsplash License",
     "Website": "https://unsplash.com/photos/DUiRJVNG_Tg"
+  },
+  "Wallpaper": {
+    "defaultWallpaper": "contents/images/guido-hofmann-DUiRJVNG_Tg-unsplash.webp"
   }
 }

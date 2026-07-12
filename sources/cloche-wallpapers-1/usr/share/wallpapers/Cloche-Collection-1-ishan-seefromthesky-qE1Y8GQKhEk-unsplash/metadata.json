@@ -6,5 +6,8 @@
     "Author": "Ishan Seefromthesky",
     "License": "Unsplash License",
     "Website": "https://unsplash.com/photos/qE1Y8GQKhEk"
+  },
+  "Wallpaper": {
+    "defaultWallpaper": "contents/images/ishan-seefromthesky-qE1Y8GQKhEk-unsplash.webp"
   }
 }

@@ -6,5 +6,8 @@
     "Author": "Phuong Uyen Vo Hoang",
     "License": "Unsplash License",
     "Website": "https://unsplash.com/photos/mBKmnETdk8M"
+  },
+  "Wallpaper": {
+    "defaultWallpaper": "contents/images/phuong-uyen-vo-hoang-mBKmnETdk8M-unsplash.webp"
   }
 }

@@ -6,5 +6,8 @@
     "Author": "Gauravdeep Singh Bansal",
     "License": "Unsplash License",
     "Website": "https://unsplash.com/photos/caC13DIDe9E"
+  },
+  "Wallpaper": {
+    "defaultWallpaper": "contents/images/gauravdeep-singh-bansal-caC13DIDe9E-unsplash.webp"
   }
 }

@@ -6,5 +6,8 @@
     "Author": "Marat Gilyadzinov",
     "License": "Unsplash License",
     "Website": "https://unsplash.com/photos/MYadhrkenNg"
+  },
+  "Wallpaper": {
+    "defaultWallpaper": "contents/images/marat-gilyadzinov-MYadhrkenNg-unsplash.webp"
   }
 }

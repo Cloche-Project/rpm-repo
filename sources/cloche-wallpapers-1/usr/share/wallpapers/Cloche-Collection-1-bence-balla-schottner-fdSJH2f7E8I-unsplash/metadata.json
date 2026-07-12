@@ -6,5 +6,8 @@
     "Author": "Bence Balla Schottner",
     "License": "Unsplash License",
     "Website": "https://unsplash.com/photos/fdSJH2f7E8I"
+  },
+  "Wallpaper": {
+    "defaultWallpaper": "contents/images/bence-balla-schottner-fdSJH2f7E8I-unsplash.webp"
   }
 }
