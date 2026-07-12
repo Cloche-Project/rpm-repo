@@ -45,8 +45,6 @@ dconf update
 %files
 /etc/dconf/db/local.d/00-cloche-gnome
 /etc/xdg/autostart/cloche-templates.desktop
-/usr/share/backgrounds/cloche/
-/usr/share/gnome-background-properties/cloche-default.xml
 /usr/share/icons/breeze/places/cloche-symbolic-current.svg
 %dir /etc/skel/.config/gtk-3.0
 /etc/skel/.config/gtk-3.0/
