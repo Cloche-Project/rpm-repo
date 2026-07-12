@@ -1,0 +1,10 @@
+{
+  "KPlugin": {
+    "Id": "cloche-default",
+    "Name": "Cloche Default",
+    "Description": "Default wallpaper for Cloche \u2014 light and dark variants available.",
+    "Author": "Augusto Marques",
+    "License": "Apache-2.0",
+    "Website": "https://github.com/cloche-project"
+  }
+}

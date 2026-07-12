@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper deleted="false">
+    <name>Cloche Default</name>
+    <filename>/usr/share/backgrounds/cloche/towers-dark.webp</filename>
+    <filename-dark>/usr/share/backgrounds/cloche/towers-dark.webp</filename-dark>
+    <filename-light>/usr/share/backgrounds/cloche/towers-light.webp</filename-light>
+    <options>zoom</options>
+    <shade_type>solid</shade_type>
+    <pcolor>#000000</pcolor>
+    <scolor>#000000</scolor>
+  </wallpaper>
+</wallpapers>
