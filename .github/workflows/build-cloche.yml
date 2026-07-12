@@ -131,21 +131,19 @@ jobs:
       - name: Organise RPMs into repo tree
         shell: bash
         run: |
-          declare -A TARGET_PATHS
-          TARGET_PATHS["rpms-fedora-44"]="cloche/44/x86_64"
-
           for ARTIFACT_DIR in /tmp/all-rpms/*/; do
             ARTIFACT_NAME=$(basename "$ARTIFACT_DIR")
-            # strip package name, keep only target part
-            TARGET_KEY="rpms-${ARTIFACT_NAME##*rpms-}"
-            TARGET_KEY="rpms-$(echo "$ARTIFACT_NAME" | grep -oP '(?<=rpms-).*'| grep -oP 'fedora-\d+|centos-stream-\d+')"
-            REPO_PATH="${TARGET_PATHS[$TARGET_KEY]:-}"
-            [ -z "$REPO_PATH" ] && continue
-            DEST="gh-pages/$REPO_PATH"
+            if echo "$ARTIFACT_NAME" | grep -q 'fedora-44'; then
+              DEST="gh-pages/cloche/44/x86_64"
+            elif echo "$ARTIFACT_NAME" | grep -q 'centos-stream-10'; then
+              DEST="gh-pages/cloche-pro/10/x86_64"
+            else
+              continue
+            fi
             mkdir -p "$DEST"
             find "$ARTIFACT_DIR" -name '*.rpm' -exec cp -f {} "$DEST/" \;
+            echo "Copied RPMs from $ARTIFACT_NAME to $DEST"
           done
-            - name: Organise RPMs into repo tree
 
       - name: Regenerate repodata
         run: |
