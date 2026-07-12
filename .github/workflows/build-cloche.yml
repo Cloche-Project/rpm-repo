@@ -146,12 +146,16 @@ jobs:
           done
       
       - name: Prune old RPMs
+        shell: bash
         run: |
           for REPO_DIR in gh-pages/cloche gh-pages/cloche-pro; do
             [ -d "$REPO_DIR" ] || continue
             find "$REPO_DIR" -mindepth 2 -maxdepth 2 -type d | while read ARCH_DIR; do
-              # for each package name, keep only the newest RPM
               for PKG in $(find "$ARCH_DIR" -name '*.rpm' | xargs -I{} rpm -qp --qf '%{NAME}\n' {} 2>/dev/null | sort -u); do
+                # only prune cloche-managed packages
+                if ! echo "$PKG" | grep -q '^cloche'; then
+                  continue
+                fi
                 mapfile -t RPMS < <(find "$ARCH_DIR" -name "${PKG}-*.rpm" | sort -V)
                 COUNT=${#RPMS[@]}
                 if [ "$COUNT" -gt 1 ]; then
