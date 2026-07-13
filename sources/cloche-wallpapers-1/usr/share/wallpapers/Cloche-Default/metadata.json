@@ -6,8 +6,5 @@
     "Author": "Augusto Marques",
     "License": "Apache-2.0",
     "Website": "https://github.com/cloche-project"
-  },
-  "Wallpaper": {
-    "defaultWallpaper": "contents/images/towers-dark.webp"
   }
 }
