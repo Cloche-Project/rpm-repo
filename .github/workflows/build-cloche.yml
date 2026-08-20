@@ -31,7 +31,7 @@ jobs:
       image: ${{ matrix.target.image }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Install build toolchain
         run: dnf install -y rpm-build rpmdevtools rpm-sign gnupg2
@@ -59,7 +59,7 @@ jobs:
           find ~/rpmbuild/RPMS -name '*.rpm' -exec cp {} /tmp/rpms/ \;
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: rpms-${{ matrix.package.name }}-${{ matrix.target.name }}
           path: /tmp/rpms/*.rpm
@@ -71,10 +71,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Download all RPM artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           path: /tmp/all-rpms
           pattern: rpms-*
@@ -122,7 +122,7 @@ jobs:
           done
 
       - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           ref: gh-pages
           path: gh-pages
