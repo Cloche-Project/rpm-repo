@@ -9,6 +9,7 @@ BuildArch:      noarch
 Requires:       plasma-desktop
 Requires:       konsole
 Requires:       cloche-common
+Requires:       cloche-wallpapers-1
 
 %description
 System-wide KDE Plasma settings and Konsole configuration for Cloche.
@@ -27,6 +28,8 @@ install -Dm644 etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc \
     %{buildroot}/etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc
 install -Dm644 etc/skel/.local/share/konsole/Main.profile \
     %{buildroot}/etc/skel/.local/share/konsole/Main.profile
+install -Dm644 etc/skel/.local/share/konsole/WhiteOnBlack.colorscheme \
+    %{buildroot}/etc/skel/.local/share/konsole/WhiteOnBlack.colorscheme
 
 %files
 %dir /etc/skel/.config
@@ -39,3 +42,4 @@ install -Dm644 etc/skel/.local/share/konsole/Main.profile \
 /etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc
 %dir /etc/skel/.local/share/konsole
 /etc/skel/.local/share/konsole/Main.profile
+/etc/skel/.local/share/konsole/WhiteOnBlack.colorscheme

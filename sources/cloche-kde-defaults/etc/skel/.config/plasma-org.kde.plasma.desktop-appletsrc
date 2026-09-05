@@ -1,5 +1,4 @@
 [ActionPlugins][0]
-MiddleButton;NoModifier=org.kde.paste
 RightButton;NoModifier=org.kde.contextmenu
 
 [ActionPlugins][1]
@@ -10,7 +9,7 @@ activityId=
 formfactor=2
 immutability=1
 lastScreen=0
-location=3
+location=4
 plugin=org.kde.panel
 wallpaperplugin=org.kde.image
 
@@ -41,8 +40,10 @@ DialogHeight=630
 DialogWidth=810
 
 [Containments][31][Applets][34][Configuration][General]
-launchers=preferred://filemanager,applications:org.mozilla.firefox.desktop
+groupedTaskVisualization=2
+launchers=preferred://filemanager,applications:io.github.kolunmi.Bazaar.desktop,applications:org.mozilla.firefox.desktop,applications:org.kde.konsole.desktop
 maxStripes=2
+wheelEnabled=AdjustVolume
 
 [Containments][31][Applets][35]
 immutability=1
@@ -139,8 +140,8 @@ DialogHeight=630
 DialogWidth=810
 
 [Containments][31][Applets][36][General]
-extraItems=org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.vault,org.kde.plasma.battery,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.weather,org.kde.plasma.volume,org.kde.plasma.bluetooth,org.kde.plasma.brightness,org.kde.plasma.cameraindicator,org.kde.plasma.devicenotifier,org.kde.kscreen,org.kde.kdeconnect,org.kde.plasma.keyboardlayout,org.kde.plasma.keyboardindicator,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager
-hiddenItems=steam,org.kde.plasma.volume,org.kde.plasma.bluetooth,org.kde.plasma.brightness,org.kde.plasma.cameraindicator,org.kde.plasma.devicenotifier,org.kde.kscreen,org.kde.kdeconnect,org.kde.plasma.keyboardlayout,org.kde.plasma.keyboardindicator,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager
+extraItems=org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.vault,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.weather,org.kde.plasma.volume,org.kde.plasma.bluetooth,org.kde.plasma.brightness,org.kde.plasma.cameraindicator,org.kde.plasma.devicenotifier,org.kde.kscreen,org.kde.kdeconnect,org.kde.plasma.keyboardlayout,org.kde.plasma.keyboardindicator,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager,org.kde.plasma.battery
+hiddenItems=steam,org.kde.plasma.volume,org.kde.plasma.bluetooth,org.kde.plasma.brightness,org.kde.plasma.cameraindicator,org.kde.plasma.devicenotifier,org.kde.kscreen,org.kde.kdeconnect,org.kde.plasma.keyboardlayout,org.kde.plasma.keyboardindicator,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager,org.kde.plasma.battery
 knownItems=org.kde.kdeconnect,org.kde.plasma.bluetooth,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.keyboardlayout,org.kde.plasma.manage-inputmethod,org.kde.plasma.vault,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardindicator,org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.printmanager,org.kde.plasma.volume,org.kde.plasma.weather
 
 [Containments][31][Applets][51]
@@ -152,8 +153,10 @@ popupHeight=451
 popupWidth=560
 
 [Containments][31][Applets][51][Configuration][Appearance]
+customDateFormat=\sd MMMM yyyy
 dateDisplayFormat=BelowTime
-dateFormat=longDate
+dateFormat=custom
+fontWeight=400
 showWeekNumbers=true
 use24hFormat=2
 
@@ -164,10 +167,6 @@ DialogWidth=810
 [Containments][31][Applets][52]
 immutability=1
 plugin=org.kde.plasma.showdesktop
-
-[Containments][31][Applets][56]
-immutability=1
-plugin=org.kde.plasma.panelspacer
 
 [Containments][31][Applets][57]
 immutability=1
@@ -182,7 +181,7 @@ immutability=1
 plugin=org.kde.plasma.marginsseparator
 
 [Containments][31][General]
-AppletOrder=32;63;34;57;51;56;62;35;36;52
+AppletOrder=32;63;34;57;62;35;36;51;52
 
 [Containments][58]
 ItemGeometries-1280x800=
@@ -205,10 +204,11 @@ DialogWidth=810
 
 [Containments][58][Wallpaper][org.kde.image][General]
 DynamicMode=2
-Image=/usr/share/wallpapers/Towers/contents/images-dark/4096x2160.png
+Image=file:///usr/share/wallpapers/Cloche-Collection-1-bence-balla-schottner-fdSJH2f7E8I-unsplash/
 SlidePaths=/usr/share/wallpapers/
 
 [Containments][59]
+ItemGeometriesHorizontal=
 activityId=0a93888c-27fb-4abe-87c6-2fdbaf35885e
 formfactor=0
 immutability=1
@@ -222,8 +222,26 @@ DialogHeight=630
 DialogWidth=810
 
 [Containments][59][Wallpaper][org.kde.image][General]
-Image=/usr/share/wallpapers/Towers/contents/images-dark/4096x2160.png
+Image=file:///usr/share/wallpapers/Cloche-Collection-1-bence-balla-schottner-fdSJH2f7E8I-unsplash/
+SlidePaths=/usr/share/wallpapers/
+
+[Containments][64]
+activityId=0a93888c-27fb-4abe-87c6-2fdbaf35885e
+formfactor=0
+immutability=1
+lastScreen=2
+location=0
+plugin=org.kde.plasma.folder
+wallpaperplugin=org.kde.image
+
+[Containments][64][ConfigDialog]
+DialogHeight=630
+DialogWidth=810
+
+[Containments][64][Wallpaper][org.kde.image][General]
+Image=file:///usr/share/wallpapers/Cloche-Collection-1-josefin-WS5yjFjycNY-unsplash/
+SlidePaths=/usr/share/wallpapers/
 
 [ScreenMapping]
-itemsOnDisabledScreens=0,0a93888c-27fb-4abe-87c6-2fdbaf35885e,1,desktop:/Return.desktop,1,0a93888c-27fb-4abe-87c6-2fdbaf35885e,7,desktop:/Mega Man Battle Network Legacy Collection Vol. 2.desktop,desktop:/Quake.desktop,desktop:/Freedom Planet 2.desktop,desktop:/Wolfenstein 3D.desktop,desktop:/Mega Man X Legacy Collection 2.desktop,desktop:/Mega Man Battle Network Legacy Collection Vol. 1.desktop,desktop:/Need for Speed Hot Pursuit Remastered.desktop
-screenMapping=
+itemsOnDisabledScreens=0,0a93888c-27fb-4abe-87c6-2fdbaf35885e,1,desktop:/Return.desktop
+screenMapping=desktop:/Mega Man Battle Network Legacy Collection Vol. 1.desktop,1,0a93888c-27fb-4abe-87c6-2fdbaf35885e,desktop:/Wolfenstein 3D.desktop,1,0a93888c-27fb-4abe-87c6-2fdbaf35885e,desktop:/Quake.desktop,1,0a93888c-27fb-4abe-87c6-2fdbaf35885e,desktop:/Mega Man X Legacy Collection 2.desktop,1,0a93888c-27fb-4abe-87c6-2fdbaf35885e,desktop:/Mega Man Battle Network Legacy Collection Vol. 2.desktop,1,0a93888c-27fb-4abe-87c6-2fdbaf35885e,desktop:/Freedom Planet 2.desktop,1,0a93888c-27fb-4abe-87c6-2fdbaf35885e

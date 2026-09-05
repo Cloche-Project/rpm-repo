@@ -134,7 +134,8 @@ ForegroundVisited=155,89,182
 
 [General]
 AccentColor=3,184,197
-ColorSchemeHash=a520bfd402716ee2eb75762091adbbb5a2055f02
+ColorScheme=BreezeDark
+ColorSchemeHash=9d38eb71ded8ff549da26d57d7cbab9164da243a
 LastUsedCustomAccentColor=3,184,197
 TerminalApplication=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=konsole org.kde.konsole
 TerminalService=org.kde.konsole.desktop
@@ -146,7 +147,8 @@ XftSubPixel=rgb
 LookAndFeelPackage=org.kde.breezedark.desktop
 ShowDeleteCommand=false
 contrast=4
-frameContrast=0.05
+frameContrast=0.2
+widgetStyle=Breeze
 
 [KFileDialog Settings]
 Allow Expansion=false
@@ -164,6 +166,9 @@ Sort hidden files last=false
 Sort reversed=false
 Speedbar Width=155
 View Style=DetailTree
+
+[KShortcutsDialog Settings]
+Dialog Size=600,480
 
 [PreviewSettings]
 EnableRemoteFolderThumbnail=false

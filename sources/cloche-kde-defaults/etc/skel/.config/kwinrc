@@ -3,6 +3,9 @@ Id_1=709b0a40-9a75-4050-a307-d6c546629299
 Number=1
 Rows=1
 
+[EdgeBarrier]
+EdgeBarrier=25
+
 [Effect-blur]
 BlurStrength=3
 NoiseStrength=2
@@ -10,6 +13,7 @@ NoiseStrength=2
 [Plugins]
 blurEnabled=true
 krohnkiteEnabled=false
+sheetEnabled=true
 
 [Script-krohnkite]
 screenGapBetween=4
@@ -48,10 +52,22 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 [Tiling][709b0a40-9a75-4050-a307-d6c546629299][0184eb8a-a4c4-4cb9-b5a9-e6b930b4aa79]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][709b0a40-9a75-4050-a307-d6c546629299][02fe77c9-20c8-48ba-94dd-8e0121b5ca57]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][709b0a40-9a75-4050-a307-d6c546629299][2bf6dd4e-5c28-45f6-90c5-d5928d03d4f3]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][709b0a40-9a75-4050-a307-d6c546629299][4ba785e6-8d0a-4177-be33-600b21899280]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][709b0a40-9a75-4050-a307-d6c546629299][6a8c8025-0361-4e33-90ab-8a37fbe3bd04]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][709b0a40-9a75-4050-a307-d6c546629299][96c5fa4f-5549-499f-9b55-5f8cd6a60f95]
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
@@ -69,6 +85,9 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 [Wayland]
 InputMethod[$e]=$HOME/.local/share/applications/com.github.maliit.keyboard.desktop
 VirtualKeyboardEnabled=true
+
+[Windows]
+FocusPolicy=FocusFollowsMouse
 
 [Xwayland]
 Scale=1

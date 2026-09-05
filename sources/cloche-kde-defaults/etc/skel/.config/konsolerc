@@ -4,5 +4,11 @@ DefaultProfile=Main.profile
 [General]
 ConfigVersion=1
 
+[KonsoleWindow]
+RememberWindowSize=false
+
+[MemorySettings]
+MemoryLimitValue=512
+
 [UiSettings]
 ColorScheme=
