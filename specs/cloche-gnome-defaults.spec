@@ -13,6 +13,7 @@ Requires:       gtk3
 Requires:       gtk4
 Requires:       gnome-shell-extension-dash-to-panel
 Requires:       gnome-shell-extension-dash-to-dock
+Requires:       cloche-wallpapers-1
 Requires:       gnome-shell-extension-blur-my-shell
 Requires:       gnome-shell-extension-caffeine
 
