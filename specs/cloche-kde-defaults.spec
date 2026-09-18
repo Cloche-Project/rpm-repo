@@ -10,6 +10,8 @@ Requires:       plasma-desktop
 Requires:       konsole
 Requires:       cloche-common
 Requires:       cloche-wallpapers-1
+Requires:       redhat-text-fonts
+Requires:       redhat-mono-fonts
 
 %description
 System-wide KDE Plasma settings and Konsole configuration for Cloche.

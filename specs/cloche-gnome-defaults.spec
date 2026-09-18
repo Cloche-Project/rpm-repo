@@ -16,6 +16,8 @@ Requires:       gnome-shell-extension-dash-to-dock
 Requires:       cloche-wallpapers-1
 Requires:       gnome-shell-extension-blur-my-shell
 Requires:       gnome-shell-extension-caffeine
+Requires:       redhat-text-fonts
+Requires:       redhat-mono-fonts
 
 %description
 System-wide GNOME settings and GTK theme configuration for Cloche.

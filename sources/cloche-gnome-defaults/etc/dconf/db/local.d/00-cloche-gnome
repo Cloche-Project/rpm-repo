@@ -56,7 +56,10 @@ clock-format='24h'
 clock-show-seconds=false
 clock-show-weekday=false
 color-scheme='prefer-light'
+document-font-name='Red Hat Text 10'
 enable-hot-corners=false
+font-name='Red Hat Text 10'
+monospace-font-name='Red Hat Mono 10'
 show-battery-percentage=false
 
 [org/gnome/desktop/notifications]

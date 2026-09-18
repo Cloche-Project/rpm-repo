@@ -142,6 +142,11 @@ TerminalService=org.kde.konsole.desktop
 XftAntialias=true
 XftHintStyle=hintslight
 XftSubPixel=rgb
+fixed=Red Hat Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,
+font=Red Hat Text,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,
+menuFont=Red Hat Text,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,
+smallestReadableFont=Red Hat Text,8,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,
+toolBarFont=Red Hat Text,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,
 
 [KDE]
 LookAndFeelPackage=org.kde.breezedark.desktop
