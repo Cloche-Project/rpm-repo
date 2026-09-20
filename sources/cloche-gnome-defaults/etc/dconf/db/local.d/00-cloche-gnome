@@ -35,8 +35,8 @@ translate=true
 [org/gnome/desktop/background]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/cloche/towers-light.webp'
-picture-uri-dark='file:///usr/share/backgrounds/cloche/towers-dark.webp'
+picture-uri='file:///usr/share/wallpapers/Cloche-Default/contents/images/3840x2025.webp'
+picture-uri-dark='file:///usr/share/wallpapers/Cloche-Default/contents/images/3840x2025-dark.webp'
 primary-color='#000000000000'
 secondary-color='#000000000000'
 
@@ -63,16 +63,10 @@ monospace-font-name='Red Hat Mono 10'
 show-battery-percentage=false
 
 [org/gnome/desktop/notifications]
-application-children=['org-gnome-software', 'org-gnome-ptyxis', 'gnome-power-panel', 'gnome-about-panel', 'org-mozilla-firefox', 'io-github-pol-rivero-github-desktop-plus', 'dev-zed-zed', 'it-mijorus-gearlever', 'org-gnome-boxes', 'lm-studio', 'org-gnome-nautilus', 'com-vscodium-codium', 'org-gnome-extensions', 'org-libreoffice-libreoffice-writer', 'org-gnome-texteditor', 'io-bassi-amberol', 'com-jeffser-nocturne', 'org-gnome-baobab']
-
-[org/gnome/desktop/notifications/application/com-jeffser-nocturne]
-application-id='com.jeffser.Nocturne.desktop'
+application-children=['org-gnome-software', 'org-gnome-ptyxis', 'gnome-power-panel', 'gnome-about-panel', 'org-mozilla-firefox', 'org-gnome-boxes', 'org-gnome-nautilus', 'com-vscodium-codium', 'org-gnome-extensions', 'org-libreoffice-libreoffice-writer', 'org-gnome-texteditor', 'io-bassi-amberol', 'org-gnome-baobab']
 
 [org/gnome/desktop/notifications/application/com-vscodium-codium]
 application-id='com.vscodium.codium.desktop'
-
-[org/gnome/desktop/notifications/application/dev-zed-zed]
-application-id='dev.zed.Zed.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-about-panel]
 application-id='gnome-about-panel.desktop'
@@ -82,15 +76,6 @@ application-id='gnome-power-panel.desktop'
 
 [org/gnome/desktop/notifications/application/io-bassi-amberol]
 application-id='io.bassi.Amberol.desktop'
-
-[org/gnome/desktop/notifications/application/io-github-pol-rivero-github-desktop-plus]
-application-id='io.github.pol_rivero.github-desktop-plus.desktop'
-
-[org/gnome/desktop/notifications/application/it-mijorus-gearlever]
-application-id='it.mijorus.gearlever.desktop'
-
-[org/gnome/desktop/notifications/application/lm-studio]
-application-id='lm_studio.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-baobab]
 application-id='org.gnome.baobab.desktop'
@@ -128,7 +113,7 @@ two-finger-scrolling-enabled=true
 [org/gnome/desktop/screensaver]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/cloche/towers-light.webp'
+picture-uri='file:///usr/share/wallpapers/Cloche-Default/contents/images/3840x2025.webp'
 primary-color='#000000000000'
 secondary-color='#000000000000'
 

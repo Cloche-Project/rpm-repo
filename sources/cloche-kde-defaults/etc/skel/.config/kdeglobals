@@ -137,7 +137,7 @@ AccentColor=3,184,197
 ColorScheme=BreezeDark
 ColorSchemeHash=9d38eb71ded8ff549da26d57d7cbab9164da243a
 LastUsedCustomAccentColor=3,184,197
-TerminalApplication=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=konsole org.kde.konsole
+TerminalApplication=konsole
 TerminalService=org.kde.konsole.desktop
 XftAntialias=true
 XftHintStyle=hintslight
