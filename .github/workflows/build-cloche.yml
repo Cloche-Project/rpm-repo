@@ -21,6 +21,8 @@ jobs:
             version: "44.0"
           - name:    cloche-wallpapers-1
             version: "1.0"
+          - name:    cloche-look-and-feel
+            version: "1.0"
           
         target:
           - name:    fedora-44

@@ -149,7 +149,7 @@ smallestReadableFont=Red Hat Text,8,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,
 toolBarFont=Red Hat Text,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,
 
 [KDE]
-LookAndFeelPackage=org.kde.breezedark.desktop
+LookAndFeelPackage=org.cloche.desktop
 ShowDeleteCommand=false
 contrast=4
 frameContrast=0.2

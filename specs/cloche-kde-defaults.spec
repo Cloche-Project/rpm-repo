@@ -10,6 +10,7 @@ Requires:       plasma-desktop
 Requires:       konsole
 Requires:       cloche-common
 Requires:       cloche-wallpapers-1
+Requires:       cloche-look-and-feel
 Requires:       redhat-text-fonts
 Requires:       redhat-mono-fonts
 
@@ -32,6 +33,8 @@ install -Dm644 etc/skel/.local/share/konsole/Main.profile \
     %{buildroot}/etc/skel/.local/share/konsole/Main.profile
 install -Dm644 etc/skel/.local/share/konsole/WhiteOnBlack.colorscheme \
     %{buildroot}/etc/skel/.local/share/konsole/WhiteOnBlack.colorscheme
+install -Dm644 etc/xdg/kdeglobals                          %{buildroot}/etc/xdg/kdeglobals
+install -Dm644 etc/xdg/kscreenlockerrc                     %{buildroot}/etc/xdg/kscreenlockerrc
 
 %files
 %dir /etc/skel/.config
@@ -45,3 +48,6 @@ install -Dm644 etc/skel/.local/share/konsole/WhiteOnBlack.colorscheme \
 %dir /etc/skel/.local/share/konsole
 /etc/skel/.local/share/konsole/Main.profile
 /etc/skel/.local/share/konsole/WhiteOnBlack.colorscheme
+%dir /etc/xdg
+/etc/xdg/kdeglobals
+/etc/xdg/kscreenlockerrc
