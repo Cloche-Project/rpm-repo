@@ -8,6 +8,7 @@ Source0:        %{name}-%{version}.tar.gz
 BuildArch:      noarch
 Requires:       plasma-desktop
 Requires:       konsole
+Requires:       plasma-applet-appgrid
 Requires:       cloche-common
 Requires:       cloche-wallpapers-1
 Requires:       cloche-look-and-feel

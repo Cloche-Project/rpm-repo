@@ -2,6 +2,10 @@
 _k_friendly_name=Activity Manager
 switch-to-activity-0a93888c-27fb-4abe-87c6-2fdbaf35885e=none,none,Switch to activity "Default"
 
+[dev.xarbit.appgrid]
+_k_friendly_name=AppGrid Launcher Center
+appgrid_open_compact=none,none,Open in Compact Mode
+
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
 Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,Switch to Last-Used Keyboard Layout

@@ -10,5 +10,8 @@ RememberWindowSize=false
 [MemorySettings]
 MemoryLimitValue=512
 
+[Notification Messages]
+ShowPasteHugeTextWarning=false
+
 [UiSettings]
 ColorScheme=
