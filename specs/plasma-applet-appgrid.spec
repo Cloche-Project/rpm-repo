@@ -27,6 +27,7 @@ BuildRequires:  kf6-ki18n-devel
 BuildRequires:  kf6-kconfig-devel
 BuildRequires:  kf6-kcoreaddons-devel
 BuildRequires:  kf6-kcolorscheme-devel
+BuildRequires:  kf6-kglobalaccel-devel
 BuildRequires:  kf6-kiconthemes-devel
 BuildRequires:  kf6-ksvg-devel
 BuildRequires:  kf6-kwindowsystem-devel
