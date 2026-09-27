@@ -1,0 +1,88 @@
+# Third-party Plasma applet, built from upstream's own release tag.
+# Version is bumped by the build-publish-appgrid.yml pipeline (see
+# versions/appgrid) the same way build-publish.yml tracks bazaar.
+Name:           plasma-applet-appgrid
+Version:        1.9.3
+Release:        1%{?dist}
+Summary:        A modern application launcher for KDE Plasma
+License:        GPL-2.0-or-later
+URL:            https://github.com/xarbit/plasma6-applet-appgrid
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+
+# No separate -debuginfo subpackage — AppGrid ships a compiled Plasma
+# plugin, not a standalone app (matches upstream's own packaging/rpm spec).
+%global debug_package %{nil}
+
+BuildRequires:  cmake
+BuildRequires:  extra-cmake-modules
+BuildRequires:  gcc-c++
+BuildRequires:  gettext
+BuildRequires:  qt6-qtbase-devel
+BuildRequires:  qt6-qtdeclarative-devel
+BuildRequires:  libplasma-devel
+BuildRequires:  kf6-kpackage-devel
+BuildRequires:  kf6-kio-devel
+BuildRequires:  kf6-kservice-devel
+BuildRequires:  kf6-ki18n-devel
+BuildRequires:  kf6-kconfig-devel
+BuildRequires:  kf6-kcoreaddons-devel
+BuildRequires:  kf6-kcolorscheme-devel
+BuildRequires:  kf6-kiconthemes-devel
+BuildRequires:  kf6-ksvg-devel
+BuildRequires:  kf6-kwindowsystem-devel
+BuildRequires:  kf6-krunner-devel
+BuildRequires:  layer-shell-qt-devel
+BuildRequires:  plasma-activities-devel
+BuildRequires:  plasma-activities-stats-devel
+BuildRequires:  plasma-workspace-devel
+BuildRequires:  appstream-qt-devel
+
+Requires:       plasma-workspace
+Requires:       plasma-desktop
+Requires:       kf6-kiconthemes
+Requires:       kf6-ksvg
+
+%description
+A modern application launcher for KDE Plasma. It offers unified
+search, favorites, categories, and both a panel and a centered popup
+presentation.
+
+%prep
+%autosetup -p1 -n plasma6-applet-appgrid-%{version}
+
+%build
+%cmake -DAPPGRID_VERSION_OVERRIDE=%{version}
+%cmake_build
+
+%install
+%cmake_install
+%find_lang dev.xarbit.appgrid
+
+# On upgrade ($1 >= 2) AppGrid is a compiled Plasma applet replaced under a
+# running plasmashell, which cannot hot-swap a C++ plugin. Tell the user to
+# restart Plasma so the live session doesn't freeze on the stale plugin.
+%post
+if [ $1 -ge 2 ]; then
+cat <<'MSG'
+AppGrid was updated. Restart Plasma to load the new version:
+  Wayland:  systemctl --user restart plasma-plasmashell.service
+  X11:      kquitapp6 plasmashell && kstart plasmashell
+MSG
+fi
+
+%files -f dev.xarbit.appgrid.lang
+%license LICENSE
+%doc README.md
+%{_qt6_plugindir}/plasma/applets/dev.xarbit.appgrid.so
+%{_qt6_plugindir}/plasma/applets/dev.xarbit.appgrid.panel.so
+%{_bindir}/appgrid
+%{_datadir}/dbus-1/services/dev.xarbit.appgrid.service
+%{_userunitdir}/appgrid.service
+%{_datadir}/applications/dev.xarbit.appgrid.desktop
+%{_datadir}/kglobalaccel/dev.xarbit.appgrid.launcher.desktop
+%{_metainfodir}/dev.xarbit.appgrid.metainfo.xml
+%{_datadir}/icons/hicolor/scalable/apps/dev.xarbit.appgrid.svg
+
+%changelog
+* %(date "+%a %b %d %Y") Cloche Maintainers <packages@cloche.example> - %{version}-1
+- Initial packaging of upstream v%{version}
