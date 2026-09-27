@@ -44,9 +44,11 @@ Requires:       kf6-kiconthemes
 Requires:       kf6-ksvg
 
 %description
-A modern application launcher for KDE Plasma. It offers unified
-search, favorites, categories, and both a panel and a centered popup
-presentation.
+A modern application launcher for KDE Plasma, packaged as two Plasma
+widgets (a panel applet and a centered popup) with unified search,
+favorites, and categories. Add either one via Plasma's "Add Widgets".
+(The standalone appgrid executable and D-Bus/systemd activation are
+upstream additions after this release and aren't packaged here yet.)
 
 %prep
 %autosetup -p1 -n plasma6-applet-appgrid-%{version}
@@ -76,11 +78,6 @@ fi
 %doc README.md
 %{_qt6_plugindir}/plasma/applets/dev.xarbit.appgrid.so
 %{_qt6_plugindir}/plasma/applets/dev.xarbit.appgrid.panel.so
-%{_bindir}/appgrid
-%{_datadir}/dbus-1/services/dev.xarbit.appgrid.service
-%{_userunitdir}/appgrid.service
-%{_datadir}/applications/dev.xarbit.appgrid.desktop
-%{_datadir}/kglobalaccel/dev.xarbit.appgrid.launcher.desktop
 %{_metainfodir}/dev.xarbit.appgrid.metainfo.xml
 %{_datadir}/icons/hicolor/scalable/apps/dev.xarbit.appgrid.svg
 
