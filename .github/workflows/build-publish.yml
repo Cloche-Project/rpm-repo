@@ -91,6 +91,15 @@ jobs:
           dnf install -y \
             rpm-build rpmdevtools rpm-sign gnupg2 curl jq
 
+      # rpmbuild's --define "version X" does NOT override the spec's own
+      # Version: tag (the tag redefines %version), so without this every
+      # "new version" build silently rebuilt whatever the spec hardcoded.
+      - name: Pin spec Version to the resolved upstream version
+        run: |
+          sed -i "s/^Version:.*/Version:        ${{ needs.check-version.outputs.version }}/" \
+            specs/bazaar.spec
+          grep '^Version:' specs/bazaar.spec
+
       - name: Install BuildRequires from spec
         run: dnf builddep -y specs/bazaar.spec
 
@@ -99,14 +108,11 @@ jobs:
 
       - name: Fetch source tarball
         run: |
-          spectool -g -R \
-            --define "version ${{ needs.check-version.outputs.version }}" \
-            specs/bazaar.spec
+          spectool -g -R specs/bazaar.spec
 
       - name: Build binary RPM
         run: |
           rpmbuild -bb \
-            --define "version ${{ needs.check-version.outputs.version }}" \
             --define "_smp_mflags -j$(nproc)" \
             specs/bazaar.spec
 

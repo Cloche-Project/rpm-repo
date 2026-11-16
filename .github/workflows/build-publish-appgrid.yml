@@ -24,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version:      ${{ steps.resolve.outputs.version }}
+      libplasma:    ${{ steps.resolve.outputs.libplasma }}
       should_build: ${{ steps.resolve.outputs.should_build }}
 
     steps:
@@ -47,11 +48,28 @@ jobs:
             fi
           fi
 
-          STORED=$(cat versions/appgrid 2>/dev/null || echo "")
-          echo "Upstream: $VERSION  |  Stored: ${STORED:-<none>}"
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          # AppGrid is a compiled Plasma plugin linked against libPlasma's
+          # soname, so a Fedora Plasma bump (e.g. 6.7 -> 6.8 dropped
+          # libPlasma.so.7) leaves the published RPM uninstallable even with
+          # no upstream AppGrid release. Track the libplasma it was built
+          # against and rebuild when Fedora's changes.
+          LIBPLASMA=$(docker run --rm fedora:44 \
+            dnf repoquery -q --latest-limit 1 --arch x86_64 --qf '%{version}\n' libplasma \
+            | tail -n1)
+          if [ -z "$LIBPLASMA" ]; then
+            echo "Failed to query Fedora 44 libplasma version" >&2
+            exit 1
+          fi
 
-          if [ "$VERSION" != "$STORED" ] || [ "${{ inputs.force }}" = "true" ]; then
+          STORED=$(cat versions/appgrid 2>/dev/null || echo "")
+          STORED_LP=$(cat versions/appgrid-libplasma 2>/dev/null || echo "")
+          echo "Upstream: $VERSION  |  Stored: ${STORED:-<none>}"
+          echo "libplasma (F44): $LIBPLASMA  |  Stored: ${STORED_LP:-<none>}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "libplasma=$LIBPLASMA" >> "$GITHUB_OUTPUT"
+
+          if [ "$VERSION" != "$STORED" ] || [ "$LIBPLASMA" != "$STORED_LP" ] \
+             || [ "${{ inputs.force }}" = "true" ]; then
             echo "should_build=true" >> "$GITHUB_OUTPUT"
           else
             echo "should_build=false" >> "$GITHUB_OUTPUT"
@@ -93,6 +111,15 @@ jobs:
           dnf install -y \
             rpm-build rpmdevtools rpm-sign gnupg2 curl jq
 
+      # rpmbuild's --define "version X" does NOT override the spec's own
+      # Version: tag (the tag redefines %version), so without this every
+      # "new version" build silently rebuilt whatever the spec hardcoded.
+      - name: Pin spec Version to the resolved upstream version
+        run: |
+          sed -i "s/^Version:.*/Version:        ${{ needs.check-version.outputs.version }}/" \
+            specs/plasma-applet-appgrid.spec
+          grep '^Version:' specs/plasma-applet-appgrid.spec
+
       - name: Install BuildRequires from spec
         run: dnf builddep -y specs/plasma-applet-appgrid.spec
 
@@ -101,14 +128,12 @@ jobs:
 
       - name: Fetch source tarball
         run: |
-          spectool -g -R \
-            --define "version ${{ needs.check-version.outputs.version }}" \
-            specs/plasma-applet-appgrid.spec
+          spectool -g -R specs/plasma-applet-appgrid.spec
 
       - name: Build binary RPM
         run: |
           rpmbuild -bb \
-            --define "version ${{ needs.check-version.outputs.version }}" \
+            --define "abi_tag lp${{ needs.check-version.outputs.libplasma }}" \
             --define "_smp_mflags -j$(nproc)" \
             specs/plasma-applet-appgrid.spec
 
@@ -226,14 +251,17 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git diff --cached --quiet && echo "Nothing changed" && exit 0
-          git commit -m "repo: publish appgrid ${{ needs.check-version.outputs.version }}"
+          git commit -m "repo: publish appgrid ${{ needs.check-version.outputs.version }} (libplasma ${{ needs.check-version.outputs.libplasma }})"
           git push origin gh-pages
 
       - name: Bump version tracking file
         run: |
           echo "${{ needs.check-version.outputs.version }}" > versions/appgrid
+          echo "${{ needs.check-version.outputs.libplasma }}" > versions/appgrid-libplasma
+          sed -i "s/^Version:.*/Version:        ${{ needs.check-version.outputs.version }}/" \
+            specs/plasma-applet-appgrid.spec
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add versions/appgrid
-          git commit -m "chore: track appgrid ${{ needs.check-version.outputs.version }}" || true
+          git add versions/appgrid versions/appgrid-libplasma specs/plasma-applet-appgrid.spec
+          git commit -m "chore: track appgrid ${{ needs.check-version.outputs.version }} (libplasma ${{ needs.check-version.outputs.libplasma }})" || true
           git push origin main

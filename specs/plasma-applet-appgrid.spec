@@ -1,9 +1,11 @@
 # Third-party Plasma applet, built from upstream's own release tag.
-# Version is bumped by the build-publish-appgrid.yml pipeline (see
-# versions/appgrid) the same way build-publish.yml tracks bazaar.
+# Version is rewritten by the build-publish-appgrid.yml pipeline (see
+# versions/appgrid) before building; the value here is just the last one.
 Name:           plasma-applet-appgrid
-Version:        1.9.3
-Release:        1%{?dist}
+Version:        1.9.6
+# The workflow passes --define "abi_tag lpX.Y.Z" (the libplasma it built
+# against) so an ABI-only rebuild sorts newer than the previous build.
+Release:        1%{?abi_tag:.%{abi_tag}}%{?dist}
 Summary:        A modern application launcher for KDE Plasma
 License:        GPL-2.0-or-later
 URL:            https://github.com/xarbit/plasma6-applet-appgrid
@@ -47,8 +49,6 @@ Requires:       kf6-ksvg
 A modern application launcher for KDE Plasma, packaged as two Plasma
 widgets (a panel applet and a centered popup) with unified search,
 favorites, and categories. Add either one via Plasma's "Add Widgets".
-(The standalone appgrid executable and D-Bus/systemd activation are
-upstream additions after this release and aren't packaged here yet.)
 
 %prep
 %autosetup -p1 -n plasma6-applet-appgrid-%{version}
